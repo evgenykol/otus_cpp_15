@@ -5,9 +5,11 @@ sudo: false
 #Install dependencies
 addons:
   apt:
-   packages:
-     - libdlib-dev
-     - libopenblas-dev
+    sources:
+      - 'deb http://archive.ubuntu.com/ubuntu xenial main universe'
+    packages:
+      - libdlib-dev
+      - libopenblas-dev
 
 script:
   - cmake .
