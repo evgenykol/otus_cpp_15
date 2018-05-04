@@ -7,16 +7,23 @@ endif()
 
 project(kkmeans VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 
+#if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+##    add_subdirectory(../dlib-19.10 dlib_build)
+#    message(" I'M APPLE")
+#    include_directories(../../dlib-19.10)
+#endif()
+
 configure_file(version.h.in version.h)
 
-add_executable(${PROJECT_NAME}  main.cpp)
+#add_executable(${PROJECT_NAME}  main.cpp)
+add_executable(${PROJECT_NAME}  kkmeans_ex.cpp)
 
 set_target_properties(${PROJECT_NAME}
         PROPERTIES
                 CXX_STANDARD 14
                 CXX_STANDARD_REQUIRED ON
                 CMAKE_CXX_EXTENSIONS OFF
-                COMPILE_OPTIONS -Wpedantic -Wall -Wextra
+                #COMPILE_OPTIONS -Wpedantic -Wall -Wextra
 )
 
 #target_link_libraries(yamr
