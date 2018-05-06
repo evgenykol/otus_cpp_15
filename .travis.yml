@@ -21,7 +21,7 @@ before_script:
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 90
   #openblas+dlib
   - sudo apt-get install libopenblas-dev -y
-  - cd dlib; mkdir build; cmake ..; sudo cmake --build . --target install
+  - cd dlib; mkdir build; cd build; cmake ..; sudo cmake --build . --target install
 
 script:
   - cmake .
