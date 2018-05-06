@@ -78,7 +78,7 @@ int main(int argc, char* argv[])
         std::vector<sample_type> samples;
         std::vector<sample_type> initial_centers;
 
-        generators(samples);
+        //generators(samples);
 
         int n;
 
