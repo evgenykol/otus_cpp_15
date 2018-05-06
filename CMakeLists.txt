@@ -8,10 +8,8 @@ endif()
 project(kkmeans VERSION 0.0.$ENV{TRAVIS_BUILD_NUMBER})
 
 configure_file(version.h.in version.h)
-find_package(dlib REQUIRED COMPONENTS)
-find_package(openblas REQUIRED)
+find_package(dlib REQUIRED)
 
-#add_executable(${PROJECT_NAME}  main.cpp)
 add_executable(${PROJECT_NAME}  kkmeans_ex.cpp)
 
 set_target_properties(${PROJECT_NAME}
@@ -19,12 +17,11 @@ set_target_properties(${PROJECT_NAME}
                 CXX_STANDARD 14
                 CXX_STANDARD_REQUIRED ON
                 CMAKE_CXX_EXTENSIONS OFF
-                #COMPILE_OPTIONS -Wpedantic -Wall -Wextra
+                COMPILE_OPTIONS -Wpedantic -Wall -Wextra
 )
 
 target_link_libraries(${PROJECT_NAME}
                         dlib::dlib
-                        openblas
 )
 
 install(TARGETS ${PROJECT_NAME}  RUNTIME DESTINATION bin)
