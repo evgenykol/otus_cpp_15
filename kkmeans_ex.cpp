@@ -101,7 +101,7 @@ int main(int argc, char* argv[])
 
         sample_type m;
         string line;
-        freopen("kkmeans_ex_starsky.txt", "rt", stdin);
+        //freopen("kkmeans_ex_circles.txt", "rt", stdin);
         while(getline(cin, line))
         {
             auto separator = line.find(';');
@@ -116,7 +116,6 @@ int main(int argc, char* argv[])
         test.train(samples,initial_centers);
 
         ofstream of("kkmeans_ex_out.txt");
-
 
         array2d<rgb_pixel> img;
         img.set_size(200, 200);
@@ -133,10 +132,10 @@ int main(int argc, char* argv[])
             auto c = test(s) + 1;
             img[x][y] = colormap_jet(c, 0, n);
 
-            of << x << ";" << y << ";" << c <<"\n";
+            of << s(0) << ";" << s(1) << ";" << c <<"\n";
         }
         of.close();
-        save_png(img, "./kkmeans.png");
+        save_bmp(img, "./kkmeans.bmp");
     }
     catch (std::exception& e)
     {
