@@ -5,7 +5,7 @@
 #include <dlib/clustering.h>
 #include <dlib/rand.h>
 #include <dlib/image_io.h>
-#include <dlib/generic_image.h>
+#include <dlib/image_transforms.h>
 
 #include "version.h"
 
@@ -116,18 +116,27 @@ int main(int argc, char* argv[])
         test.train(samples,initial_centers);
 
         ofstream of("kkmeans_ex_out.txt");
-        for(auto &s : samples)
-        {
-            of << s(0) << ";" << s(1) << ";" << test(s) <<"\n";
-        }
-        of.close();
+
 
         array2d<rgb_pixel> img;
         img.set_size(200, 200);
 
-        image_type
+        for (auto &pix : img)
+        {
+            pix = rgb_pixel(255, 255, 255);
+        }
 
-        //save_png(img, "kkmeans.png");
+        for(auto &s : samples)
+        {
+            auto x = s(0) + 100;
+            auto y = s(1) + 100;
+            auto c = test(s) + 1;
+            img[x][y] = colormap_jet(c, 0, n);
+
+            of << x << ";" << y << ";" << c <<"\n";
+        }
+        of.close();
+        save_png(img, "./kkmeans.png");
     }
     catch (std::exception& e)
     {
