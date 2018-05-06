@@ -27,6 +27,7 @@ before_script:
   - cd build
   - cmake ..
   - sudo env "PATH=$PATH" cmake --build . --target install
+  - cd ../../; echo `pwd`
 
 script:
   - cmake .
